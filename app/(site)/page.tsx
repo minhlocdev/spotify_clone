@@ -1,8 +1,15 @@
+import getSongs from "@/actions/getSongs";
+
 import Chip from "@/components/Chip";
 import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
 
-export default function Home() {
+import PageContent from "./components/PageContent";
+
+export const revalidate = 0;
+
+export default async function Home() {
+  const songs = await getSongs();
   return ( 
     <div className="
       bg-neutral-900
@@ -70,9 +77,7 @@ export default function Home() {
             Newest songs
           </h1>
         </div>
-        <div>
-          List of Songs
-        </div>
+        <PageContent songs={songs} />
       </div>
     </div>
   )
