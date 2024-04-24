@@ -62,12 +62,12 @@ export default async function Home() {
             <ListItem
               image="/images/spotify-minimal-playlist-album-cover-cyan.jpg"
               name="Hot day vibes"
-              href="hot-days-vibes"
+              href="#"
             />       
             <ListItem
               image="/images/groovy.jpg"
               name="Groovy Vibes & Funky"
-              href="groove-vibes-&-funky"
+              href="#"
             />  
           </div>
         </div>
