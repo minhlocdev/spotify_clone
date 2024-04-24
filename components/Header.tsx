@@ -9,6 +9,7 @@ import { twMerge } from "tailwind-merge";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import toast from "react-hot-toast";
 
+import usePlayer from "@/hooks/usePlayer";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
 
@@ -22,6 +23,7 @@ interface HeaderProbs {
 const Header:React.FC<HeaderProbs> = ({
     children, className
 }) => {
+    const player = usePlayer();
     const authModal = useAuthModal();
     const router = useRouter();
 
@@ -30,7 +32,7 @@ const Header:React.FC<HeaderProbs> = ({
 
     const handleLogout = async () => {
         const { error } = await supabaseClient.auth.signOut();
-        //reset any playing song
+        player.reset();
         router.refresh();
 
         if (error) {
